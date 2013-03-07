@@ -18,6 +18,7 @@ BACKUPDIR="/mnt/backup"
 EMAIL="niall.munro@ed.ac.uk"
 DUMMYRUN=0
 PRINTCOMMANDS=0
+WORKINGDIR="/root/workspace/bash/backup"
 VERBOSE=0
 while getopts "hdpv" OPTION
 do
@@ -51,9 +52,9 @@ else
     CMDHOMESYNC="rsync -arv \
         --delete \
         --delete-excluded \
-        --log-file=/root/backup.log \
-        --files-from=/root/bin/backup.lst \
-        --exclude-from=/root/bin/backup.excludes"
+        --log-file=$HOME/backup.log \
+        --files-from=$WORKINGDIR/backup.lst \
+        --exclude-from=$WORKINGDIR/backup.excludes"
     if [ $DUMMYRUN -eq 1 ]; then
         CMDHOMESYNC+=" --dry-run"
     fi
@@ -64,7 +65,7 @@ else
         $BACKUPDIR/$HOSTNAME/"
 
     CMDSHAREDSYNC="rsync -arv \
-        --log-file=/root/backup.log \
+        --log-file=$HOME/backup.log \
         --exclude=/Pictures/tab-images.zip \
         --exclude=/Pictures/Photos/"
     if [ $DUMMYRUN -eq 1 ]; then
