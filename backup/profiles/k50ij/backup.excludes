@@ -1,0 +1,47 @@
+# Backup excludes
+
+#global excludes
+- /home/*/Desktop/
+- /home/*/Downloads/
+- /home/*/Videos/
+
+#hidden files
+- /home/*/.adobe/
+- /home/*/.dbus/
+- /home/*/.cache/
+- /home/**/.evolution/
+- /home/*/.fonts/
+- /home/*/.fontconfig/
+- /home/*/.google/
+- /home/**/.google-chrome/
+- /home/*/.icons/
+- /home/*/.java/
+- /home/*/.local/
+- /home/*/.macromedis/
+- /home/*/.mozilla/
+- /home/*/.nx/
+- /home/*/.pan2/
+- /home/*/.PlayOnLinux/
+- /home/*/.pulse/
+- /home/*/.shotwell/
+- /home/*/.thumbnails/
+- /home/*/.wine/
+- **/.metadata/
+- /home/*/.xbmc/
+
+#bobyn
+/home/bobyn/workspace/
+
+#denise
+- /home/denise/.VirtualBox/
+- /home/denise/VirtualBox VMs/
+
+#root
++ root/.ssh/
+- /root/.*
+- /root/rpmbuild/
+- /root/workspace/
+
+- /etc/cups/subscriptions*
+- *.log
+- *~

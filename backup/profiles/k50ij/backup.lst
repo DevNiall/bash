@@ -1,0 +1,25 @@
+#System fles
+/etc/
+
+#User files
+#/home/denise/
+
+/home/bobyn/.bashrc
+/home/bobyn/.bash_profile
+/home/bobyn/.filezilla/
+/home/bobyn/.fonts/
+/home/bobyn/.gimp-2.8/
+/home/bobyn/.gnote/
+/home/bobyn/.gtk-bookmarks
+/home/bobyn/.mission-control/
+/home/bobyn/.Skype/
+/home/bobyn/.ssh/
+/home/bobyn/Documents/
+#/home/bobyn/Music/
+#/home/bobyn/Photos/
+#/home/bobyn/Pictures/
+/home/bobyn/Podcasts/
+#/home/bobyn/Videos/Camera/
+
+#/root/
+/root/.ssh/

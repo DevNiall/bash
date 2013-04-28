@@ -14,13 +14,18 @@ OPTIONS:
 EOF
 }
 
-BACKUPDIR="/mnt/backup"
+declare -A BACKUP
+BACKUP[USER]="backup"
+BACKUP[HOST]="dlib-bobyn.ucs.ed.ac.uk"
+BACKUP[DIR]="/mnt/backup"
 EMAIL="niall.munro@ed.ac.uk"
+WORKINGDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DUMMYRUN=0
 PRINTCOMMANDS=0
-WORKINGDIR="/root/workspace/bash/backup"
+STATS=0
 VERBOSE=0
-while getopts "hdpv" OPTION
+
+while getopts "hdpsv" OPTION
 do
      case $OPTION in
          h)
@@ -33,6 +38,9 @@ do
          p)
              PRINTCOMMANDS=1
              ;;
+         s)
+             STATS=1
+             ;;
          v)
              VERBOSE=1
              ;;
@@ -43,40 +51,46 @@ do
      esac
 done
 
-if ! mountpoint -q $BACKUPDIR; then
+if ! ssh ${BACKUP[USER]}@${BACKUP[HOST]} "mountpoint -q ${BACKUP[DIR]}"; then
 
-    echo "backup location is not mounted." | mail -s "backup@$HOSTNAME" $EMAIL
+    echo "backup location is not mounted." #| mail -s "backup@$HOSTNAME" $EMAIL
 else
-
     # mount point is available
-    CMDHOMESYNC="rsync -arv \
+    CMDHOMESYNC="rsync -azh \
         --delete \
         --delete-excluded \
+        --progress \
         --log-file=$HOME/backup.log \
-        --files-from=$WORKINGDIR/backup.lst \
-        --exclude-from=$WORKINGDIR/backup.excludes"
+        --files-from=$WORKINGDIR/profiles/$HOSTNAME/backup.lst \
+        --exclude-from=$WORKINGDIR/profiles/$HOSTNAME/backup.excludes"
     if [ $DUMMYRUN -eq 1 ]; then
         CMDHOMESYNC+=" --dry-run"
+    fi
+    if [ $STATS -eq 1 ]; then
+        CMDHOMESYNC+=" --stats"
     fi
     if [ $VERBOSE -eq 1 ]; then
         CMDHOMESYNC+=" --verbose"
     fi
     CMDHOMESYNC+=" / \
-        $BACKUPDIR/$HOSTNAME/"
+        ${BACKUP[USER]}@${BACKUP[HOST]}:${BACKUP[DIR]}/$HOSTNAME/"
 
-    CMDSHAREDSYNC="rsync -arv \
+    CMDSHAREDSYNC="rsync -azh \
+        --progress \
+        --ignore-existing \
         --log-file=$HOME/backup.log \
-        --exclude=/Pictures/tab-images.zip \
-        --exclude=/Pictures/Photos/"
+        --exclude-from=$WORKINGDIR/profiles/$HOSTNAME/shared.excludes"
     if [ $DUMMYRUN -eq 1 ]; then
         CMDSHAREDSYNC+=" --dry-run"
+    fi
+    if [ $STATS -eq 1 ]; then
+        CMDSHAREDSYNC+=" --stats"
     fi
     if [ $VERBOSE -eq 1 ]; then
         CMDSHAREDSYNC+=" --verbose"
     fi
-    CMDSHAREDSYNC+=" /home/bobyn/Pictures \
-        /home/bobyn/Iso \
-        backup@$HOSTNAME:$BACKUPDIR/shared/"
+     CMDSHAREDSYNC+=" `cat $WORKINGDIR/profiles/$HOSTNAME/shared.lst` \
+        ${BACKUP[USER]}@${BACKUP[HOST]}:${BACKUP[DIR]}/shared/"
 
     echo -e "Profile backup"
     echo -e "=============="    
