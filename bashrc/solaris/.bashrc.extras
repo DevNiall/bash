@@ -1,0 +1,14 @@
+if [ -f ~/.bashrc.extras.$USER ]; then
+  . ~/.bashrc.extras.$USER
+fi
+
+# check ssh identities to try and determine user
+SSH_USER=`echo $SSH_CLIENT | awk '{print $1;}'`
+if [ -z $SSH_USER ]; then
+  SSH_USER=`ssh-add -l 2>&1 | perl -e 'while(<STDIN>){print $1 if m/\s+(\w+)@/ || m|/home/([^/]*)/\.ssh/id_dsa|;}'`
+  export SSH_USER
+fi
+
+if [ "$SSH_USER" != "" -a -f ~/.bashrc.extras.$SSH_USER ]; then
+  source ~/.bashrc.extras.$SSH_USER
+fi
