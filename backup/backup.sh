@@ -59,6 +59,7 @@ else
     CMDHOMESYNC="rsync -azh \
         --delete \
         --delete-excluded \
+        --partial \
         --progress \
         --log-file=$HOME/backup.log \
         --files-from=$WORKINGDIR/profiles/$HOSTNAME/backup.lst \
@@ -76,6 +77,7 @@ else
         ${BACKUP[USER]}@${BACKUP[HOST]}:${BACKUP[DIR]}/$HOSTNAME/"
 
     CMDSHAREDSYNC="rsync -azh \
+        --partial \
         --progress \
         --ignore-existing \
         --log-file=$HOME/backup.log \
