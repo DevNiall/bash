@@ -1,0 +1,74 @@
+#!/bin/bash
+if [ "$1" == "-d" -a -n "$2" -a -n "$3" ]; then
+        out=1;
+        selection="$3"
+elif [ "$1" == "-d" -a -n "$2" ]; then
+        out=2;
+        selection="$2"
+else
+  selection="$1"
+fi
+
+        case $selection in
+
+                "1" )
+                station="-playlist http://www.bbc.co.uk/radio/listen/live/r1.asx"
+#                station="-cache 512 mms://wmlive-acl.bbc.co.uk/wms/bbc_ami/radio1/radio1_bb_live_ep1_sl0?BBC-UID=942d3d9e0127ccf1cad69bfd416aef17e8a9a4549080f271424820b413dca038\&amp;SSO2-UID="
+#                station="-cache 512 mms://wmlive-acl.bbc.co.uk/wms/bbc_ami/radio1/radio1_bb_live_ep1_sl0"
+                ;;
+
+
+                "1x" )
+		station="-playlist http://www.bbc.co.uk/radio/listen/live/r1x.asx"
+                ;;
+
+                "2" )
+                station="-playlist http://www.bbc.co.uk/radio/listen/live/r2.asx"
+                ;;
+
+                "3" )
+                station="-playlist http://www.bbc.co.uk/radio/listen/live/r3.asx"
+                ;;
+
+                "4" )
+                station="-playlist http://www.bbc.co.uk/radio/listen/live/r4.asx"
+                ;;
+
+                "6" )
+                station="-playlist http://www.bbc.co.uk/radio/listen/live/r6.asx"
+                ;;
+
+                "world" )
+                station="-playlist http://www.bbc.co.uk/worldservice/meta/tx/nb/live_infent_au_nb.asx"
+                ;;
+
+                "scot" )
+                station="-playlist http://www.bbc.co.uk/radio/listen/live/rs.asx"
+                ;;
+
+                "--list" )
+                echo "usage: Radio [station].";
+                echo "List of available radio stations:";
+                echo "  BBC Radio [1]";
+                echo "  BBC Radio [1x]tra";
+                echo "  BBC Radio [2]";
+                echo "  BBC Radio [3]";
+                echo "  BBC Radio [4]";
+                echo "  BBC Radio [6]";
+                echo "  BBC [world] Service";
+                echo "  BBC [scot]land";
+                ;;
+                * )
+                echo "ERROR: Invalid selection"
+                echo "usage: Radio [station]";
+                echo "Use --list to display list of available stations";
+                echo "";
+                ;;
+        esac
+
+if [ -n "$station" -a -n "$out" ]; then
+        echo "out";
+
+elif [ -n "$station" ]; then
+  mplayer $station;
+fi
