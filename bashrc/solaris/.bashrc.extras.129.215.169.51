@@ -4,11 +4,11 @@
 #  WHITE = default
 
 if [[ "$HOSTNAME" == *"srv"* ]]; then
-  PS1="\e[1;31m[\u@\h \W]\$ \e[m" #RED
+  PS1="\[\e[1;31m\][\u@\h \W]\$ \[\e[m\]" #RED
 elif [[ "$HOSTNAME" == *"dev"* ]]; then
-  PS1="\e[1;34m[\u@\h \W]\$ \e[m" #BLUE
+  PS1="\[\e[1;34m\][\u@\h \W]\$ \[\e[m\]" #BLUE
 else
-  PS1="\e[1;37m[\u@\h \W]\$ \e[m" #WHITE
+  PS1="\[\e[1;37m\][\u@\h \W]\$ \[\e[m\]" #WHITE
 fi
 
 TERM=xterm
