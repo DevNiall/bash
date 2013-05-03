@@ -21,3 +21,6 @@ bind '"\e[A": history-search-backward'	# Search backward through history for com
 bind '"\e[B": history-search-forward'	# Search forward through history for completion
 #bind 'set show-all-if-ambiguous on'	# Tab once for complete
 #bind 'set completion-ignore-case on'	# Tab completion ignores case
+
+#MOTD courtesy me - fortune | cowsay
+curl --silent --max-time 1 http://dlib-bobyn.ucs.ed.ac.uk/dev/cowsay.php
