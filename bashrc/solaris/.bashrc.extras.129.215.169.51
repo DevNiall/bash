@@ -23,4 +23,5 @@ bind '"\e[B": history-search-forward'	# Search forward through history for compl
 #bind 'set completion-ignore-case on'	# Tab completion ignores case
 
 #MOTD courtesy me - fortune | cowsay
+clear
 curl --silent --max-time 1 http://dlib-bobyn.ucs.ed.ac.uk/dev/cowsay.php
