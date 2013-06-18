@@ -15,7 +15,8 @@ HISTTIMEFORMAT='[%F %T]  '
 HISTIGNORE="history"
 
 # Prevent different sessions overwriting bash_history
-PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+# http://briancarper.net/blog/248/
+PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 shopt -s histappend
 
 bind '"\e[A": history-search-backward'	# Search backward through history for completion
