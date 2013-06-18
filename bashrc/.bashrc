@@ -14,6 +14,10 @@ HISTCONTROL=ignoreboth:erasedups # Ignore lines starting with a space, ignore an
 HISTTIMEFORMAT='[%F %T]  '
 HISTIGNORE="history"
 
+# Prevent different sessions overwriting bash_history
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+shopt -s histappend
+
 bind '"\e[A": history-search-backward'	# Search backward through history for completion
 bind '"\e[B": history-search-forward'	# Search forward through history for completion
 
