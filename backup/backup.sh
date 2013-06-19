@@ -4,7 +4,7 @@ usage()
 cat << EOF
 usage: $0 options
 
-Lamebollock's work backup script.
+Niall's work backup script.
 
 OPTIONS:
    -h      Show this message
