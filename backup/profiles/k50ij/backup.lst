@@ -2,7 +2,7 @@
 /etc/
 
 #User files
-#/home/denise/
+/home/denise/
 
 /home/bobyn/.bashrc
 /home/bobyn/.bash_profile
