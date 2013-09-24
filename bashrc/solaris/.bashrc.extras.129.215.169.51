@@ -22,6 +22,12 @@ bind '"\e[B": history-search-forward'	# Search forward through history for compl
 #bind 'set show-all-if-ambiguous on'	# Tab once for complete
 #bind 'set completion-ignore-case on'	# Tab completion ignores case
 
-#MOTD courtesy me - fortune | cowsay
-clear
-curl --silent --max-time 1 http://dlib-bobyn.ucs.ed.ac.uk/dev/cowsay.php
+alias ps='/usr/ucb/ps -auxww'
+alias vi=vim
+
+#MOTD courtesy, me - fortune | cowsay
+if [[ $- == *i* ]] #Show motd if shell is interactive, allows SFTP
+then
+  clear
+  curl --silent --max-time 1 http://dlib-bobyn.ucs.ed.ac.uk/dev/cowsay.php
+fi

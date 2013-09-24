@@ -22,6 +22,12 @@ shopt -s histappend
 bind '"\e[A": history-search-backward'	# Search backward through history for completion
 bind '"\e[B": history-search-forward'	# Search forward through history for completion
 
+setxkbmap -model evdev -layout gb
+
+youtube_viewer(){
+        mplayer -really-quiet $(youtube-dl -g $1)
+} 
+
 # User specific aliases and functions
 alias pg='ps aux | grep $(echo $1 | sed "s/^\(.\)/[\1]/g")'
 
