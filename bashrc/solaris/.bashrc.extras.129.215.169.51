@@ -24,6 +24,7 @@ bind '"\e[B": history-search-forward'	# Search forward through history for compl
 
 alias ps='/usr/ucb/ps -auxww'
 alias vi=vim
+alias ll='ls -l'
 
 #MOTD courtesy, me - fortune | cowsay
 if [[ $- == *i* ]] #Show motd if shell is interactive, allows SFTP
