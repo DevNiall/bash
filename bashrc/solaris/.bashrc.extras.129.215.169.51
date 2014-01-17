@@ -13,22 +13,24 @@ fi
 
 TERM=xterm
 
-#fix map bindings
-bind '"\e[3~": delete-char'		# Delete key
-bind '"\e[1;5C": forward-word'		# Enables Ctrl+Right
-bind '"\e[1;5D": backward-word'		# Enables Ctrl+Left to jump words
-bind '"\e[A": history-search-backward'	# Search backward through history for completion
-bind '"\e[B": history-search-forward'	# Search forward through history for completion
-#bind 'set show-all-if-ambiguous on'	# Tab once for complete
-#bind 'set completion-ignore-case on'	# Tab completion ignores case
-
 alias ps='/usr/ucb/ps -auxww'
 alias vi=vim
 alias ll='ls -l'
 
-#MOTD courtesy, me - fortune | cowsay
-if [[ $- == *i* ]] #Show motd if shell is interactive, allows SFTP
-then
+# The following shoud only be included for interactive shells.
+# Prevents disrupion to tools such as scp, rsync etc.
+if [[ $- == *i* ]]; then
+
+  #fix map bindings
+  bind '"\e[3~": delete-char'             # Delete key
+  bind '"\e[1;5C": forward-word'          # Enables Ctrl+Right
+  bind '"\e[1;5D": backward-word'         # Enables Ctrl+Left to jump words
+  bind '"\e[A": history-search-backward'  # Search backward through history for completion
+  bind '"\e[B": history-search-forward'   # Search forward through history for completion
+  #bind 'set show-all-if-ambiguous on'    # Tab once for complete
+  #bind 'set completion-ignore-case on'   # Tab completion ignores case
+
+  #MOTD courtesy, me - fortune | cowsay
   clear
   curl --silent --max-time 1 http://dlib-bobyn.ucs.ed.ac.uk/dev/cowsay.php
 fi
