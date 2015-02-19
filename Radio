@@ -12,63 +12,76 @@ fi
         case $selection in
 
                 "1" )
-                station="-playlist http://www.bbc.co.uk/radio/listen/live/r1.asx"
-#                station="-cache 512 mms://wmlive-acl.bbc.co.uk/wms/bbc_ami/radio1/radio1_bb_live_ep1_sl0?BBC-UID=942d3d9e0127ccf1cad69bfd416aef17e8a9a4549080f271424820b413dca038\&amp;SSO2-UID="
-#                station="-cache 512 mms://wmlive-acl.bbc.co.uk/wms/bbc_ami/radio1/radio1_bb_live_ep1_sl0"
-                ;;
-
+			station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_one.m3u8"
+		        ;;
 
                 "1x" )
-		station="-playlist http://www.bbc.co.uk/radio/listen/live/r1x.asx"
-                ;;
+			station="-playlist http://www.bbc.co.uk/radio/listen/live/r1x.asx"
+		        ;;
 
                 "2" )
-                station="-playlist http://www.bbc.co.uk/radio/listen/live/r2.asx"
-                ;;
+		        station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_two.m3u8"
+		        ;;
 
                 "3" )
-                station="-playlist http://www.bbc.co.uk/radio/listen/live/r3.asx"
-                ;;
+		        station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_three.m3u8"
+		        ;;
 
                 "4" )
-                station="-playlist http://www.bbc.co.uk/radio/listen/live/r4.asx"
-                ;;
+		        station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_fourfm.m3u8"
+		        ;;
+
+                "4x" )
+		        station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_four_extra.m3u8"
+		        ;;
+
+                "5" )
+		        station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_five_live.m3u8"
+		        ;;
 
                 "6" )
-                station="-playlist http://www.bbc.co.uk/radio/listen/live/r6.asx"
-                ;;
-
-                "world" )
-                station="-playlist http://www.bbc.co.uk/worldservice/meta/tx/nb/live_infent_au_nb.asx"
-                ;;
+		        station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_6music.m3u8"
+		        ;;
 
                 "scot" )
-                station="-playlist http://www.bbc.co.uk/radio/listen/live/rs.asx"
-                ;;
+		        station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_scotland_fm.m3u8"
+		        ;;
+
+		"gael" )
+			station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_nan_gaidheal.m3u8"
+			;;
+
+                "world" )
+		        station="http://bbcwsen-lh.akamaihd.net/i/WSEIEUK_1@189911/master.m3u8"
+		        ;;
+
 
                 "--list" )
-                echo "usage: Radio [station].";
-                echo "List of available radio stations:";
-                echo "  BBC Radio [1]";
-                echo "  BBC Radio [1x]tra";
-                echo "  BBC Radio [2]";
-                echo "  BBC Radio [3]";
-                echo "  BBC Radio [4]";
-                echo "  BBC Radio [6]";
-                echo "  BBC [world] Service";
-                echo "  BBC [scot]land";
-                ;;
+		        echo "usage: Radio [station].";
+		        echo "List of available radio stations:";
+		        echo "  BBC Radio [1]";
+		        echo "  BBC Radio [1x]tra";
+		        echo "  BBC Radio [2]";
+		        echo "  BBC Radio [3]";
+		        echo "  BBC Radio [4]";
+		        echo "  BBC Radio [4x]tra";
+		        echo "  BBC Radio [5]";
+		        echo "  BBC Radio [6]";
+		        echo "  BBC [scot]land";
+		        echo "  BBC [world] Service";
+		        echo "  BBC Radio Nan [gael]";
+		        ;;
                 * )
-                echo "ERROR: Invalid selection"
-                echo "usage: Radio [station]";
-                echo "Use --list to display list of available stations";
-                echo "";
-                ;;
+		        echo "ERROR: Invalid selection"
+		        echo "usage: Radio [station]";
+		        echo "Use --list to display list of available stations";
+		        echo "";
+		        ;;
         esac
 
 if [ -n "$station" -a -n "$out" ]; then
         echo "out";
 
 elif [ -n "$station" ]; then
-  mplayer $station;
+  mplayer $station 2> /dev/null;
 fi
