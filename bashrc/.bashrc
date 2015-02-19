@@ -19,7 +19,7 @@ HISTIGNORE="history"
 PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 shopt -s histappend
 
-setxkbmap -model evdev -layout gb
+#setxkbmap -model evdev -layout gb
 
 youtube_viewer(){
         mplayer -really-quiet $(youtube-dl -g $1)
