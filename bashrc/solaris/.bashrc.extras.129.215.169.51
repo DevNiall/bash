@@ -32,5 +32,5 @@ if [[ $- == *i* ]]; then
 
   #MOTD courtesy, me - fortune | cowsay
   clear
-  curl --silent --max-time 1 http://dlib-bobyn.ucs.ed.ac.uk/dev/cowsay.php
+  curl --silent --max-time 1 http://dlib-bobyn.ucs.ed.ac.uk/cowsay.php
 fi
