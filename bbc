@@ -55,9 +55,34 @@ fi
 		        station="http://bbcwsen-lh.akamaihd.net/i/WSEIEUK_1@189911/master.m3u8"
 		        ;;
 
+                "one" )
+                        get_iplayer --stream --modes=best --type=livetv 80003 --player="mplayer -cache 128 -" 2>/dev/null
+                        exit
+                        ;;
+
+                "two" )
+                      get_iplayer --stream --modes=best --type=livetv 80006 --player="mplayer -cache 128 -" 2>/dev/null
+                        exit
+                        ;;
+
+                "three" )
+                      get_iplayer --stream --modes=best --type=livetv 80005 --player="mplayer -cache 128 -" 2>/dev/null
+                        exit
+                        ;;
+
+                "four" )
+                      get_iplayer --stream --modes=best --type=livetv 80001 --player="mplayer -cache 128 -" 2>/dev/null
+                        exit
+                        ;;
+
+                "news" )
+                      get_iplayer --stream --modes=best --type=livetv 80002 --player="mplayer -cache 128 -" 2>/dev/null
+                        exit
+                        ;;
+
 
                 "--list" )
-		        echo "usage: Radio [station].";
+		        echo "usage: bbc [station].";
 		        echo "List of available radio stations:";
 		        echo "  BBC Radio [1]";
 		        echo "  BBC Radio [1x]tra";
@@ -70,10 +95,15 @@ fi
 		        echo "  BBC [scot]land";
 		        echo "  BBC [world] Service";
 		        echo "  BBC Radio Nan [gael]";
+                        echo "  BBC [one]";
+                        echo "  BBC [two]";
+                        echo "  BBC [three]";
+                        echo "  BBC [four]";
+                        echo "  BBC [news]";
 		        ;;
                 * )
 		        echo "ERROR: Invalid selection"
-		        echo "usage: Radio [station]";
+		        echo "usage: bbc [station]";
 		        echo "Use --list to display list of available stations";
 		        echo "";
 		        ;;
@@ -83,5 +113,5 @@ if [ -n "$station" -a -n "$out" ]; then
         echo "out";
 
 elif [ -n "$station" ]; then
-  mplayer $station 2> /dev/null;
+  mplayer -cache 768 $station 2> /dev/null;
 fi

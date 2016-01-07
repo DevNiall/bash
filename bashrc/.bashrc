@@ -19,6 +19,9 @@ HISTIGNORE="history"
 PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 shopt -s histappend
 
+export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
+export LESS=" -R"
+
 #setxkbmap -model evdev -layout gb
 
 youtube_viewer(){

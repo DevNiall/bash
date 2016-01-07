@@ -1,14 +1,24 @@
 #Backup excludes
 
 - /home/bobyn/workspace/**/target*/
-- android-sdk-linux/
-- /home/bobyn/Pictures/tab-images.zip
-- /home/bobyn/Pictures/Photos/
-- /home/bobyn/workspace/**/.metadata/
-- /home/bobyn/workspace/mediahub/mhub_metadata/raw/**/*.xml
+- /home/bobyn/Documents/Personal/Bobby/
+- /home/bobyn/Photos/
+home/bobyn/workspace/mediahub/RemoteSystemsTempFiles/
+- /home/bobyn/workspace/Android/
+- /home/bobyn/workspace/AndroidStudioProjects/material-design-icons
+- /home/bobyn/workspace/mediahub/mhub_metadata/raw/
+
+- /etc/cups/
 
 - /root/.x*
 - *.class
 - *.log
 - *.thumbnails/
 - *~
+- .metadata/
+- build/
+- .git/
+- .gradle/
+- .svn/
+- .config/
+- .subversion

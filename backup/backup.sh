@@ -56,7 +56,7 @@ if ! ssh ${BACKUP[USER]}@${BACKUP[HOST]} "mountpoint -q ${BACKUP[DIR]}"; then
     echo "backup location is not mounted." #| mail -s "backup@$HOSTNAME" $EMAIL
 else
     # mount point is available
-    CMDHOMESYNC="rsync -azh \
+    CMDHOMESYNC="rsync -arzh \
         --delete \
         --delete-excluded \
         --partial \
@@ -81,7 +81,7 @@ else
         --progress \
         --ignore-existing \
         --log-file=$HOME/backup.log \
-        --exclude-from=$WORKINGDIR/profiles/$HOSTNAME/shared.excludes"
+        --exclude-from=$WORKINGDIR/profiles/shared/shared.excludes"
     if [ $DUMMYRUN -eq 1 ]; then
         CMDSHAREDSYNC+=" --dry-run"
     fi
@@ -91,7 +91,7 @@ else
     if [ $VERBOSE -eq 1 ]; then
         CMDSHAREDSYNC+=" --verbose"
     fi
-     CMDSHAREDSYNC+=" `cat $WORKINGDIR/profiles/$HOSTNAME/shared.lst` \
+     CMDSHAREDSYNC+=" `cat $WORKINGDIR/profiles/shared/shared.lst` \
         ${BACKUP[USER]}@${BACKUP[HOST]}:${BACKUP[DIR]}/shared/"
 
     echo -e "Profile backup"
