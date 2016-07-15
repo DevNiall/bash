@@ -1,117 +1,121 @@
 #!/bin/bash
 if [ "$1" == "-d" -a -n "$2" -a -n "$3" ]; then
-        out=1;
-        selection="$3"
+	out=1;
+	selection="$3"
 elif [ "$1" == "-d" -a -n "$2" ]; then
-        out=2;
-        selection="$2"
+	out=2;
+	selection="$2"
 else
-  selection="$1"
+	selection="$1"
 fi
 
-        case $selection in
+	case $selection in
 
-                "1" )
+		"1" )
 			station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_one.m3u8"
-		        ;;
+			;;
 
-                "1x" )
+		"1x" )
 			station="-playlist http://www.bbc.co.uk/radio/listen/live/r1x.asx"
-		        ;;
+			;;
 
-                "2" )
-		        station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_two.m3u8"
-		        ;;
+		"2" )
+			station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_two.m3u8"
+			;;
 
-                "3" )
-		        station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_three.m3u8"
-		        ;;
+		"3" )
+			station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_three.m3u8"
+			;;
 
-                "4" )
-		        station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_fourfm.m3u8"
-		        ;;
+		"4" )
+			station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_fourfm.m3u8"
+			;;
 
-                "4x" )
-		        station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_four_extra.m3u8"
-		        ;;
+		"4x" )
+			station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_four_extra.m3u8"
+			;;
 
-                "5" )
-		        station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_five_live.m3u8"
-		        ;;
+		"5" )
+			station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_five_live.m3u8"
+			;;
 
-                "6" )
-		        station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_6music.m3u8"
-		        ;;
+		"6" )
+			station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_6music.m3u8"
+			;;
 
-                "scot" )
-		        station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_scotland_fm.m3u8"
-		        ;;
+		"scot" )
+			station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_scotland_fm.m3u8"
+			;;
 
 		"gael" )
 			station="http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/ak/bbc_radio_nan_gaidheal.m3u8"
 			;;
 
-                "world" )
-		        station="http://bbcwsen-lh.akamaihd.net/i/WSEIEUK_1@189911/master.m3u8"
-		        ;;
+		"world" )
+			station="http://bbcwsen-lh.akamaihd.net/i/WSEIEUK_1@189911/master.m3u8"
+			;;
 
-                "one" )
-                        get_iplayer --stream --modes=best --type=livetv 80003 --player="mplayer -cache 128 -" 2>/dev/null
-                        exit
-                        ;;
+		"one" )
+			get_iplayer --stream --modes=best --type=livetv 80003 --player="mplayer -cache 128 -" 2>/dev/null
+			exit
+			;;
 
-                "two" )
-                      get_iplayer --stream --modes=best --type=livetv 80006 --player="mplayer -cache 128 -" 2>/dev/null
-                        exit
-                        ;;
+		"two" )
+			get_iplayer --stream --modes=best --type=livetv 80006 --player="mplayer -cache 128 -" 2>/dev/null
+			exit
+			;;
 
-                "three" )
-                      get_iplayer --stream --modes=best --type=livetv 80005 --player="mplayer -cache 128 -" 2>/dev/null
-                        exit
-                        ;;
+		"three" )
+			get_iplayer --stream --modes=best --type=livetv 80005 --player="mplayer -cache 128 -" 2>/dev/null
+			exit
+			;;
 
-                "four" )
-                      get_iplayer --stream --modes=best --type=livetv 80001 --player="mplayer -cache 128 -" 2>/dev/null
-                        exit
-                        ;;
+		"four" )
+			get_iplayer --stream --modes=best --type=livetv 80001 --player="mplayer -cache 128 -" 2>/dev/null
+			exit
+			;;
 
-                "news" )
-                      get_iplayer --stream --modes=best --type=livetv 80002 --player="mplayer -cache 128 -" 2>/dev/null
-                        exit
-                        ;;
+		"news" )
+			get_iplayer --stream --modes=best --type=livetv 80002 --player="mplayer -cache 128 -" 2>/dev/null
+			exit
+			;;
 
+		"lbc" )
+			mplayer -playlist http://media-ice.musicradio.com/LBCUK.m3u 2> /dev/null;
+			exit
+			;;
 
-                "--list" )
-		        echo "usage: bbc [station].";
-		        echo "List of available radio stations:";
-		        echo "  BBC Radio [1]";
-		        echo "  BBC Radio [1x]tra";
-		        echo "  BBC Radio [2]";
-		        echo "  BBC Radio [3]";
-		        echo "  BBC Radio [4]";
-		        echo "  BBC Radio [4x]tra";
-		        echo "  BBC Radio [5]";
-		        echo "  BBC Radio [6]";
-		        echo "  BBC [scot]land";
-		        echo "  BBC [world] Service";
-		        echo "  BBC Radio Nan [gael]";
-                        echo "  BBC [one]";
-                        echo "  BBC [two]";
-                        echo "  BBC [three]";
-                        echo "  BBC [four]";
-                        echo "  BBC [news]";
-		        ;;
-                * )
-		        echo "ERROR: Invalid selection"
-		        echo "usage: bbc [station]";
-		        echo "Use --list to display list of available stations";
-		        echo "";
-		        ;;
-        esac
+		"--list" )
+			echo "usage: bbc [station].";
+			echo "List of available radio stations:";
+			echo "  BBC Radio [1]";
+			echo "  BBC Radio [1x]tra";
+			echo "  BBC Radio [2]";
+			echo "  BBC Radio [3]";
+			echo "  BBC Radio [4]";
+			echo "  BBC Radio [4x]tra";
+			echo "  BBC Radio [5]";
+			echo "  BBC Radio [6]";
+			echo "  BBC [scot]land";
+			echo "  BBC [world] Service";
+			echo "  BBC Radio Nan [gael]";
+			echo "  BBC [one]";
+			echo "  BBC [two]";
+			echo "  BBC [three]";
+			echo "  BBC [four]";
+			echo "  BBC [news]";
+			;;
+		* )
+			echo "ERROR: Invalid selection"
+			echo "usage: bbc [station]";
+			echo "Use --list to display list of available stations";
+			echo "";
+			;;
+	esac
 
 if [ -n "$station" -a -n "$out" ]; then
-        echo "out";
+	echo "out";
 
 elif [ -n "$station" ]; then
-  mplayer -cache 768 $station 2> /dev/null;
+	mplayer -cache 768 $station 2> /dev/null;
 fi
